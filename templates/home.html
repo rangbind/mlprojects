@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Medical Costs Prediction</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        width: 100%;
+      }
+      .top-left-link {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        text-decoration: none;
+        color: #007bff;
+      }
+      .top-left-link:hover {
+        text-decoration: underline;
+      }
+      h1 {
+        text-align: center;
+        color: #333333;
+      }
+      .profile {
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+      }
+      .form-box {
+        margin-top: 20px;
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      .form-group select,
+      .form-group input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        color: #ffffff;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+      h2 {
+        text-align: center;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">      
+      <h1>Student Score Prediction</h1>      
+      <div class="form-box">
+        <form action="{{url_for('predict_data')}}" method="POST">
+          <div class="form-group">
+            <label for="gender">Gender: </label>
+            <select id="gender" name="gender">
+              <option value="">Select Your Option</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="race_enthnicity">Ethnicity: </label>
+            <select id="race_enthnicity" name="race_enthnicity">
+              <option value="">Select Ethnicity</option>
+              <option value="group A">Group A</option>
+              <option value="group B">Group B</option>
+              <option value="group C">Group C</option>
+              <option value="group D">Group D</option>
+              <option value="group E">Group E</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="parental_level_of_education">Parental Level of Education: </label>
+            <select id="parental_level_of_education" name="parental_level_of_education">
+              <option value="">Select Your Option</option>
+              <option value="associate's degree">Associate's Degree</option>
+              <option value="bachelor's degree">Bachelor's Degree</option>
+              <option value="high school">High School</option>
+              <option value="master's degree">Master's Degree</option>
+              <option value="some college">Some College</option>
+              <option value="some high school">Some High School</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="lunch">Lunch Type: </label>
+            <select id="lunch" name="lunch">
+              <option value="">Select Lunch Type</option>
+              <option value="free/reduced">Free/reduced</option>
+              <option value="standard">Standard</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="test_preparation_course">Test Preparation Course: </label>
+            <select id="test_preparation_course" name="test_preparation_course">
+              <option value="">Select Test Preparation</option>
+              <option value="completed">Completed</option>
+              <option value="none">None</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="reading_score">Reading Score out of 100: </label>
+            <input id="reading_score" name="reading_score" type="text" placeholder="Reading Score">
+          </div>
+          <div class="form-group">
+            <label for="writing_score">Writing Score  out of 100: </label>
+            <input id="writing_score" name="writing_score" type="text" placeholder="Writing Score">
+          </div>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <h2>
+        Predicted Score is : {{ results }}
+      </h2>
+    </div>
+  </body>
+</html>
